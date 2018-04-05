@@ -3,6 +3,31 @@ This is the component view that represents the 'Home' tab.
 Feel free to customize layouts and components to change how the tab view looks.
 -->
 <GridLayout class="page page-content">
-    <Label class="page-icon fa" text="&#xf015;"></Label>
-    <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
+    <GridLayout rows="*, *, *, *, auto">
+        <Label
+            row="0"
+            class=" welcome-text page-placeholder"
+            text="Dobro došli na Quantox MeetUp 2018">
+        </Label>
+        <Label
+            row="1"
+            class=" welcome-text page-placeholder"
+            [text]="meetupStartTime | date:'dd. MMMM yyyy. hh:ss'">
+        </Label>
+        <Label
+            row="2"
+            class=" welcome-text page-placeholder"
+            [text]="thisMoment | date:'dd. MMMM yyyy. hh:ss'">
+        </Label>
+        <Label
+            row="3"
+            class=" welcome-text page-placeholder"
+            [text]="calculateTime()">
+        </Label>
+        <Label
+            row="4"
+            class=" welocme-city page-placeholder"
+            text="Kragujevac">
+        </Label>
+    </GridLayout>
 </GridLayout>
