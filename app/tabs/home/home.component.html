@@ -1,33 +1,31 @@
-<!--
-This is the component view that represents the 'Home' tab.
-Feel free to customize layouts and components to change how the tab view looks.
--->
 <GridLayout class="page page-content">
-    <GridLayout rows="*, *, *, *, auto">
-        <Label
-            row="0"
-            class=" welcome-text page-placeholder"
-            text="Dobro došli na Quantox MeetUp 2018">
-        </Label>
-        <Label
-            row="1"
-            class=" welcome-text page-placeholder"
-            [text]="meetupStartTime | date:'dd. MMMM yyyy. hh:ss'">
-        </Label>
-        <Label
-            row="2"
-            class=" welcome-text page-placeholder"
-            [text]="thisMoment | date:'dd. MMMM yyyy. hh:ss'">
-        </Label>
-        <Label
-            row="3"
-            class=" welcome-text page-placeholder"
-            [text]="calculateTime()">
-        </Label>
-        <Label
-            row="4"
-            class=" welocme-city page-placeholder"
-            text="Kragujevac">
-        </Label>
+    <GridLayout rows="*, *, auto" columns="*, *">
+        <!-- Welcome -->
+        <StackLayout row="0" colSpan="2">
+                <Label
+                    class="welcome-text "
+                    text="Dobro došli">
+                </Label>
+                <Label 
+                    class="welcome-text important-text shaking-animation"
+                    text="Quantox Meetup 2018">
+                </Label>
+                <Label
+                    class="welcome-text"
+                    text="Kragujevac">
+                </Label>
+        </StackLayout>
+        <!-- Buttons -->
+        <StackLayout row="1" col="0" >
+            <Button class="btn btn-rounded-lg pool-color" text="Popuni anketu" (tap)="openPool()"></Button>  
+        </StackLayout> 
+        <StackLayout row="1" col="1">
+            <Button class="btn btn-rounded-lg jobs-color" text="Otvorene pozicije" (tap)="openJobs()"></Button>  
+        </StackLayout>  
+        <!-- Counter -->
+        <StackLayout row="2" colSpan="2" class="time-counter blinking-animation">
+                <Label text="Vreme do početka:"></Label>
+                <Label [text]="timeDifference"></Label>   
+        </StackLayout>
     </GridLayout>
 </GridLayout>

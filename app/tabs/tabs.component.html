@@ -6,9 +6,10 @@
     selectedTabTextColor="#20624d"
     tabBackgroundColor="#e6e6e6"
     androidSelectedTabHighlightColor="#20624d"
+    [selectedIndex]="selectedIndex"
     (selectedIndexChanged)="onSelectedIndexChanged($event)">
     <StackLayout *tabItem="{title: 'Početna', iconSource: getIconSource('home')}">
-        <Home></Home>
+        <Home (confirmDialogResult)="tabIndexChange($event)"></Home>
     </StackLayout>
     <StackLayout *tabItem="{title: 'Druženje', iconSource: getIconSource('browse')}">
         <Browse></Browse>

@@ -1,59 +1,58 @@
 import { Component, OnInit } from "@angular/core";
 import { isAndroid } from "platform";
-import { SelectedIndexChangedEventData, TabView, TabViewItem } from "tns-core-modules/ui/tab-view";
+import {
+  SelectedIndexChangedEventData,
+  TabView,
+  TabViewItem
+} from "tns-core-modules/ui/tab-view";
 
 @Component({
-    selector: "TabsComponent",
-    moduleId: module.id,
-    templateUrl: "./tabs.component.html",
-    styleUrls: ["./tabs.component.scss"]
+  selector: "TabsComponent",
+  moduleId: module.id,
+  templateUrl: "./tabs.component.html",
+  styleUrls: ["./tabs.component.scss"]
 })
 export class TabsComponent implements OnInit {
+  selectedIndex: number = 0;
+  private _title: string;
 
-    private _title: string;
+  constructor() {
+    /*  */
+  }
 
-    constructor() {
-        /* ***********************************************************
-        * Use the constructor to inject app services that will be needed for
-        * the whole tab navigation layout as a whole.
-        *************************************************************/
+  ngOnInit(): void {
+    /* */
+  }
+
+  get title(): string {
+    return this._title;
+  }
+
+  set title(value: string) {
+    if (this._title !== value) {
+      this._title = value;
     }
+  }
+  getIconSource(icon: string): string {
+    return isAndroid ? "" : "res://tabIcons/" + icon;
+  }
 
-    ngOnInit(): void {
-        /* ***********************************************************
-        * Use the "ngOnInit" handler to initialize data for the whole tab
-        * navigation layout as a whole.
-        *************************************************************/
-    }
-
-    get title(): string {
-        return this._title;
-    }
-
-    set title(value: string) {
-        if (this._title !== value) {
-            this._title = value;
-        }
-    }
-
-    /* ***********************************************************
-    * The "getIconSource" function returns the correct tab icon source
-    * depending on whether the app is ran on Android or iOS.
-    * You can find all resources in /App_Resources/os
-    *************************************************************/
-    getIconSource(icon: string): string {
-        return isAndroid ? "" : "res://tabIcons/" + icon;
-    }
-
-    /* ***********************************************************
-    * Get the current tab view title and set it as an ActionBar title.
-    * Learn more about the onSelectedIndexChanged event here:
-    * https://docs.nativescript.org/cookbook/ui/tab-view#using-selectedindexchanged-event-from-xml
-    *************************************************************/
-    onSelectedIndexChanged(args: SelectedIndexChangedEventData) {
-        const tabView = <TabView>args.object;
-        const selectedTabViewItem = tabView.items[args.newIndex];
-
+  onSelectedIndexChanged(args: SelectedIndexChangedEventData) {
+    const tabView = <TabView>args.object;
+    const selectedTabViewItem = tabView.items[args.newIndex];
+    setTimeout(() => {
         this.title = selectedTabViewItem.title;
+    }, 0);
+  }
+
+  tabIndexChange(index: any) {
+    if (index === 0) {
+        this.selectedIndex = 0;
+    } else if (index === 1) {
+        this.selectedIndex = 1;
+    } else if (index === 2) {
+        this.selectedIndex = 2;
     }
+  }
+
 }

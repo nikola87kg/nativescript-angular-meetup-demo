@@ -1,8 +1,10 @@
 {
+  "name": "nativescript-meetup-quantox",
   "description": "NativeScript Angular App for Quantox Meetup in Kragujevac",
+  "version": "1.0.0",
   "license": "SEE LICENSE IN <your-license-filename>",
   "readme": "NativeScript Application",
-  "repository": "<fill-your-repository-here>",
+  "repository": "nativescript-angular-meetup-demo",
   "nativescript": {
     "id": "org.nativescript.quantoxmeetupkragujevac",
     "tns-android": {
@@ -22,6 +24,7 @@
     "@angular/platform-browser": "~5.2.0",
     "@angular/platform-browser-dynamic": "~5.2.0",
     "@angular/router": "~5.2.0",
+    "moment": "^2.22.0",
     "nativescript-angular": "~5.2.0",
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.10",
@@ -34,6 +37,7 @@
     "@ngtools/webpack": "~1.9.4",
     "babel-traverse": "6.4.5",
     "babel-types": "6.4.5",
+    "babylon": "6.4.5",
     "codelyzer": "~4.0.2",
     "copy-webpack-plugin": "~4.3.0",
     "css-loader": "~0.28.7",
