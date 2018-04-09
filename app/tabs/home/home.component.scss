@@ -1,81 +1,120 @@
-.welcome-text {
-    color: #20624d;
-    font-weight: normal;
+/* Variables */
+$home-primary: #20624d;
+$home-alternative:  #a3730d;
+
+/* Logo */
+Image.quantox-logo {
+    horizontal-align: center;
+    margin: 20;
+} 
+
+.big-margin {
+    margin: 30;
+}
+
+/* Intro text */
+Label.intro-text {
     text-align: center;
-    font-size: 28;
-    margin-top: 20;
-    &.important-text {
+    &.company {
         text-transform: uppercase;
         font-size: 30;
-        margin: 20 0;
         font-weight: bold;
+        color: black;
+        .first-letter {
+            font-size: 36;
+            &.primary {
+                color: $home-primary;
+            }
+            &.alternative {
+                color: $home-alternative;
+            }
+        }
+    }
+    &.location {
+        font-size: 24;    
+        color: black; 
+        border-top-color: $home-primary;
+        border-top-width: 2 ;
+        margin: 5 30;
     }
 }
 
-@keyframes shaking {
-    0%   {rotate:0}
-    30%  {rotate:5}
-    50%  {rotate:0}
-    70%  {rotate:-5}
-    100% {rotate:0}
+/* Animations */
+@keyframes scale {
+    0%   {transform: scale(1.0)}
+    50%  {transform: scale(1.5)}
+    100% {transform: scale(1.0)}
 }
 
-.shaking-animation {
-    animation-name: shaking;
-    animation-duration: 2s;
+.scale-animation {
+    animation-name: scale;
+    animation-duration: 5s;
+    animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
 }
 
-.time-counter {
-    font-size: 30;
-    text-align: center;
-    color: white;
-    background-color:rgb(158, 36, 52);
-    padding: 20 0;
+@keyframes colorChanger {
+    0%   {background-color:rgb(36, 154, 158) }
+    50%  {background-color: $home-alternative; }
+    100% {background-color:rgb(36, 154, 158) }
 }
 
-
-.time-counter Label {
-    color: white;
-}
-
-@keyframes blinking {
-    0%   {background-color:rgb(158, 36, 52) }
-    50%  {background-color:rgb(158, 36, 93) }
-    100% {background-color:rgb(158, 36, 52) }
-}
-
-.blinking-animation {
-    animation-name: blinking;
-    animation-duration: 5s;
+.color-changer {
+    animation-name: colorChanger;
+    animation-duration: 2s;
     animation-timing-function: ease;
     animation-iteration-count: infinite;
 }
 
-Button.pool-color {
-    border-color: rgb(158, 119, 36) ;
-    border-width: 2;
-    font-weight: bold;
-    background-color: white;
-    color: rgb(158, 119, 36) ;
-};
-
-Button.pool-color:highlighted {
-    border-color: rgb(158, 119, 36) ;
-    background-color: rgb(158, 119, 36) ;
+/* Counter */
+.time-counter {
+    font-size: 26;
+    text-align: center;
     color: white;
-};
+    background-color: $home-alternative;
+    padding: 10 0;
+    width: 100%;
+}
 
-Button.jobs-color {
-    border-color:#20624d;
-    border-width: 2;
-    font-weight: bold;
-    background-color: white;
-    color:#20624d;
-};
-
-Button.jobs-color:highlighted {
-    border-color:#20624d;
-    background-color:#20624d;
+.time-counter Label {
     color: white;
+    horizontal-align: center;
+    text-align: center;
+    width: 100%;
+}
+
+/* Buttons */
+
+.button-wrapper {
+    vertical-align: center;
+    margin: 10;
+}
+
+Button {
+    vertical-align: center;
+    &.pool-color {
+        border-color: $home-alternative ;
+        border-width: 2;
+        font-weight: bold;
+        background-color: white;
+        color: $home-alternative ;
+        &:highlighted {
+            border-color: $home-alternative ;
+            background-color: $home-alternative ;
+            color: white;
+        };
+    };
+    &.jobs-color {
+        border-color:$home-primary;
+        border-width: 2;
+        font-weight: bold;
+        background-color: white;
+        color:$home-primary;
+        &:highlighted {
+            border-color:$home-primary;
+            background-color:$home-primary;
+            color: white;
+        };
+    };
+    
 };

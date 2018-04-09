@@ -1,0 +1,10 @@
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" text="O aplikaciji"></Label>
+</ActionBar>
+
+<GridLayout class="page" rows="auto, auto, auto, auto, auto" columns="auto, *">
+    <StackLayout [row]="i" *ngFor="let item of aboutList, let i = index" (tap)="goTo(item.link)">
+        <Image [src]="item.source" stretch="none" ></Image> 
+        <Label [text]="item.text"> </Label> 
+    </StackLayout>
+</GridLayout>

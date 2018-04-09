@@ -1,0 +1,23 @@
+.job-list Label {
+    font-size: 14;
+    &.counter {
+        text-align: center;
+        padding: 10 5 10 20;
+    }
+    &.position {
+        text-align: left;
+        padding: 10;
+    }
+    &.city {
+        text-align: right;
+        padding: 10 20 10 5;
+    }
+}
+
+.even {
+    background-color: rgb(238, 238, 238);
+}
+
+.odd {
+    background-color: white;
+}

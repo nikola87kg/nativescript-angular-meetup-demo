@@ -1,31 +1,37 @@
-<GridLayout class="page page-content">
-    <GridLayout rows="*, *, auto" columns="*, *">
-        <!-- Welcome -->
-        <StackLayout row="0" colSpan="2">
-                <Label
-                    class="welcome-text "
-                    text="Dobro došli">
-                </Label>
-                <Label 
-                    class="welcome-text important-text shaking-animation"
-                    text="Quantox Meetup 2018">
-                </Label>
-                <Label
-                    class="welcome-text"
-                    text="Kragujevac">
-                </Label>
-        </StackLayout>
-        <!-- Buttons -->
-        <StackLayout row="1" col="0" >
-            <Button class="btn btn-rounded-lg pool-color" text="Popuni anketu" (tap)="openPool()"></Button>  
-        </StackLayout> 
-        <StackLayout row="1" col="1">
-            <Button class="btn btn-rounded-lg jobs-color" text="Otvorene pozicije" (tap)="openJobs()"></Button>  
-        </StackLayout>  
-        <!-- Counter -->
-        <StackLayout row="2" colSpan="2" class="time-counter blinking-animation">
-                <Label text="Vreme do početka:"></Label>
-                <Label [text]="timeDifference"></Label>   
-        </StackLayout>
-    </GridLayout>
+<GridLayout class="page page-content" columns="*, *" [rows]="isPortrait ? '*, auto, auto' : '*, *, auto'" columns="*, *">
+
+    <!-- Welcome --> <!-- Gradient is like Stack Layout -->
+    <Gradient row="0" col="0" 
+        [rowSpan]="isPortrait ? '1' : '2'" [colSpan]="isPortrait ? '2' : '1'" 
+        [direction]="isPortrait ? 'to bottom' : 'to right'" colors="#d9d9d9, white">
+        <Image src="res://quantox" stretch="none" class="quantox-logo scale-animation" 
+        [class.big-margin]="isPortrait">
+        </Image>
+        <Label class="intro-text company">
+            <FormattedString>
+                <Span text="Q" class="first-letter primary"></Span>
+                <Span text="uantox "></Span>
+                <Span text="M" class="first-letter alternative roboto"></Span>
+                <Span text="eetup"></Span>
+            </FormattedString>
+        </Label>
+        <Label text="Kragujevac, April 2018"  class="intro-text location roboto">
+        </Label>
+    </Gradient>
+
+    <!-- Buttons -->
+    <StackLayout class="button-wrapper" [row]="isPortrait ? '1' : '0'" [col]="isPortrait ? '0' : '1'">
+        <Button class="btn btn-rounded-lg pool-color" text="Popuni anketu" (tap)="goToForm()"></Button>
+    </StackLayout>
+    <StackLayout class="button-wrapper" row="1" col="1">
+        <Button class="btn btn-rounded-lg jobs-color" [nsRouterLink]="['/about']"  
+            text="O aplikaciji">
+        </Button>
+    </StackLayout>
+
+    <!-- Counter -->
+    <StackLayout row="2" col="0" colSpan="2" class="time-counter color-changer">
+        <Label [text]="timeDifference" ></Label>
+    </StackLayout>
+
 </GridLayout>

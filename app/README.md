@@ -38,7 +38,7 @@ There is one main component that holds the tabs page:
 There are three blank custom components used for the tab views located in these folders:
 - `/tabs/browse`
 - `/tabs/home`
-- `/tabs/search`
+- `/tabs/jobs`
 
 ### Styling
 This template is set up to use SASS for styling. All classes used are based on the {N} core theme – consult the [documentation](https://docs.nativescript.org/angular/ui/theme.html#theme) to understand how to customize it. Check it out to see what classes you can use on which component.

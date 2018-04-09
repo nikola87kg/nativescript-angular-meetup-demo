@@ -8,13 +8,13 @@
     androidSelectedTabHighlightColor="#20624d"
     [selectedIndex]="selectedIndex"
     (selectedIndexChanged)="onSelectedIndexChanged($event)">
-    <StackLayout *tabItem="{title: 'Početna', iconSource: getIconSource('home')}">
+    <StackLayout *tabItem="{title: 'Početna'}">
         <Home (confirmDialogResult)="tabIndexChange($event)"></Home>
     </StackLayout>
-    <StackLayout *tabItem="{title: 'Druženje', iconSource: getIconSource('browse')}">
+    <StackLayout *tabItem="{title: 'Anketa'}">
         <Browse></Browse>
     </StackLayout>
-    <StackLayout *tabItem="{title: 'Pridruži se', iconSource: getIconSource('search')}">
-        <Search></Search>
+    <StackLayout *tabItem="{title: 'Pridruži se'}">
+        <Jobs></Jobs>
     </StackLayout>
 </TabView>
