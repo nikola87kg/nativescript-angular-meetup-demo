@@ -1,18 +1,27 @@
-<GridLayout class="page page-content" rows="auto, auto, auto, auto, auto">
+<GridLayout class="page page-content" rows="auto, auto, auto, auto, auto, auto">
     <StackLayout row="0" (tap)="openPositions()">
-        <Label class="question" text="1. Koja si pozicija?"></Label>
-        <Label class="answer" [text]="positionPlaceholder"></Label>
+        <Label class="question" text="1. Na kojoj poziciji radiš?"></Label>
+        <Label class="answer" [class.answer-invalid]="!positionSelected && isFormInvalid" [text]="positionPlaceholder"></Label>
     </StackLayout>
     <StackLayout row="1" (tap)="openKnowledge()">
-        <Label class="question" text="2. Koja nivo znanja poseduješ?"></Label>
-        <Label class="answer" [text]="knowledgePlaceholder"></Label>
+        <Label class="question" text="2. Koja nivo iskustva poseduješ?"></Label>
+        <Label class="answer" [class.answer-invalid]="!knowledgeSelected && isFormInvalid" [text]="knowledgePlaceholder"></Label>
     </StackLayout>
     <StackLayout row="2" (tap)="openYearRang()">
         <Label class="question" text="3. Koliko imaš godina?"></Label>
-        <Label class="answer" [text]="yearPlaceholder"></Label>
+        <Label class="answer" [class.answer-invalid]="!yearSelected && isFormInvalid" [text]="yearPlaceholder"></Label>
     </StackLayout>
     <StackLayout row="3" (tap)="openFramework()">
         <Label class="question" text="4. Koji je tvoj omiljeni JS framework?" ></Label>
-        <Label class="answer" [text]="frameworkPlaceholder"></Label>
+        <Label class="answer" [class.answer-invalid]="!frameworkSelected && isFormInvalid" [text]="frameworkPlaceholder"></Label>
+    </StackLayout>
+    <StackLayout row="4">
+        <Label class="question" text="5. Ukucaj svoj e-mail" ></Label>
+        <TextField class="answer-email" [class.input-invalid]="!email && isFormInvalid" [hint]="emailPlaceholder" autocorrect="false" 
+                   [(ngModel)]="email" required></TextField>
+    </StackLayout>
+    <StackLayout row="5">
+        <Button text="Potvrdi odgovore" (tap)="postAnswers()" width="auto"></Button>
+        <Label text="* Morate popuniti sva polja" *ngIf="isFormInvalid" class="warning"></Label>
     </StackLayout>
 </GridLayout>

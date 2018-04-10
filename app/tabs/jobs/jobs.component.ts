@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from "@angular/core";
+
 import { JobModel } from "./jobs.model";
+
 import { JobsService } from "../../shared/services/jobs.service";
 
 @Component({
@@ -12,12 +14,12 @@ import { JobsService } from "../../shared/services/jobs.service";
 
 export class JobsComponent implements OnInit {
     jobArray: Array<JobModel> = [{
-        "id": 1,
-        "name": "FE developer",
-        "city": "Kragujevac",
-        "link": "https://quantox.com",
-        "created_at": "2018-04-10 13:28:39",
-        "updated_at": "2018-04-10 13:28:39"
+        id: 1,
+        name: "FE developer",
+        city: "Kragujevac",
+        link: "https://quantox.com",
+        created_at: "2018-04-10 13:28:39",
+        updated_at: "2018-04-10 13:28:39"
     }];
     private counter: number;
 

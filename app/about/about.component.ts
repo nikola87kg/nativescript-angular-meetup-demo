@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import * as utils from "utils/utils";
 
 @Component({
@@ -7,41 +7,34 @@ import * as utils from "utils/utils";
   templateUrl: "./about.component.html",
   styleUrls: ["about.component.scss"]
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent {
   aboutList = [
     {
       source: "~/images/native_script_logo.png",
+      text: "NativeScript v3.4.3",
       link: "https://www.nativescript.org/"
     },
     {
       source: "~/images/angular_logo.png",
+      text: "Angular v5.2.0",
       link: "https://angular.io/"
     },
     {
-      source: "&#xf09b;",
+      source:  "~/images/angular_logo.png",
+      text: "Preuzmi kód na GitHubu",
       link: "https://github.com/nikola87kg/nativescript-angular-meetup-demo"
     },
     {
-      source: "&#xf0e1;",
+      source: "~/images/angular_logo.png",
+      text: "Quantox na LinkedIn-u",
       link: "https://www.linkedin.com/company/quantoxtechnology/"
     },
     {
-      source: "&#xf08c;",
+      source: "~/images/angular_logo.png",
+      text: "Autor na LinkedIn-u",
       link: "https://www.linkedin.com/in/nikolajeremic"
     }
   ];
-
-  constructor() {
-    /************************************************************
-     * Use the constructor to inject app services that you need in this component.
-     *************************************************************/
-  }
-
-  ngOnInit(): void {
-    /************************************************************
-     * Use the "ngOnInit" handler to initialize data for this component.
-     *************************************************************/
-  }
 
   goTo(link) {
     utils.openUrl(link);

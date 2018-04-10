@@ -1,9 +1,8 @@
 /* Core modules */
 import { NgModule, NgModuleFactoryLoader, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptModule } from "nativescript-angular/nativescript.module";
-import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
-
+import { NativeScriptHttpModule } from "nativescript-angular/http";
+import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
 /* 3rd party */
 import { registerElement } from "nativescript-angular";
@@ -22,15 +21,12 @@ import { JobsService } from "./shared/services/jobs.service";
     ],
     imports: [
         NativeScriptModule,
-        NativeScriptFormsModule,
         NativeScriptHttpModule,
+        NativeScriptFormsModule,
         AppRoutingModule
     ],
     declarations: [
         AppComponent
-    ],
-    providers: [
-        JobsService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
