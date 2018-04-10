@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
-import { DataItem } from "./jobs.model";
+import { ChangeDetectionStrategy, Component, Input, OnInit } from "@angular/core";
+import { JobModel } from "./jobs.model";
+import { JobsService } from "../../shared/services/jobs.service";
 
 @Component({
     selector: "Jobs",
@@ -8,30 +9,31 @@ import { DataItem } from "./jobs.model";
     styleUrls: ["./jobs.component.scss"],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class JobsComponent  {
-    myItems: Array<DataItem>;
+
+export class JobsComponent implements OnInit {
+    jobArray: Array<JobModel> = [{
+        "id": 1,
+        "name": "FE developer",
+        "city": "Kragujevac",
+        "link": "https://quantox.com",
+        "created_at": "2018-04-10 13:28:39",
+        "updated_at": "2018-04-10 13:28:39"
+    }];
     private counter: number;
 
-    constructor() {
-        this.myItems = [
-            { id: 1, name: "Frontend Developer", city: "Beograd" },
-            { id: 2, name: "Senior PHP Developer", city: "Beograd" },
-            { id: 3, name: "PHP Developer", city: "Beograd" },
-            { id: 4, name: "Ruby on Rails Developer", city: "Beograd" },
-            { id: 5, name: "Clojure Developer", city: "Svi gradovi" },
-            { id: 6, name: "Crypto Project Community Manager", city: "Svi gradovi" },
-            { id: 7, name: "NodeJS Developer", city: "Svi gradovi" },
-            { id: 8, name: "Python Developer", city: "Svi gradovi" },
-            { id: 9, name: ".NET Deveoper", city: "Svi gradovi" },
-            { id: 10, name: "Java Developer", city: "Svi gradovi" },
-            { id: 11, name: "Java QA", city: "Svi gradovi" },
-            { id: 12, name: "DevOps Engineer", city: "Svi gradovi" },
-            { id: 13, name: "Blockchain Developer", city: "Svi gradovi" },
-            { id: 14, name: "Frontend Developer", city: "Kragujevac" },
-            { id: 15, name: "PHP Developer", city: "Kragujevac" },
-            { id: 16, name: "PHP Developer", city: "Niš" },
-            { id: 17, name: "Frontend Developer", city: "Niš" }
-        ];
+    constructor(private jobsService: JobsService) {
+    }
+
+    ngOnInit() {
+        this.getJobs();
+    }
+
+    getJobs() {
+        this.jobsService.getJobs().subscribe(
+            (response) => {
+                this.jobArray = response.data;
+            }
+        );
     }
 
     onItemTap(args) {

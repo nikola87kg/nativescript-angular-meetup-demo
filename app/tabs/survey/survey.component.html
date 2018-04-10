@@ -1,0 +1,18 @@
+<GridLayout class="page page-content" rows="auto, auto, auto, auto, auto">
+    <StackLayout row="0" (tap)="openPositions()">
+        <Label class="question" text="1. Koja si pozicija?"></Label>
+        <Label class="answer" [text]="positionPlaceholder"></Label>
+    </StackLayout>
+    <StackLayout row="1" (tap)="openKnowledge()">
+        <Label class="question" text="2. Koja nivo znanja poseduješ?"></Label>
+        <Label class="answer" [text]="knowledgePlaceholder"></Label>
+    </StackLayout>
+    <StackLayout row="2" (tap)="openYearRang()">
+        <Label class="question" text="3. Koliko imaš godina?"></Label>
+        <Label class="answer" [text]="yearPlaceholder"></Label>
+    </StackLayout>
+    <StackLayout row="3" (tap)="openFramework()">
+        <Label class="question" text="4. Koji je tvoj omiljeni JS framework?" ></Label>
+        <Label class="answer" [text]="frameworkPlaceholder"></Label>
+    </StackLayout>
+</GridLayout>

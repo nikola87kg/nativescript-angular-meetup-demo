@@ -5,7 +5,7 @@
     </StackLayout>
     <StackLayout row="1" col="0" class="hr-dark m-t-20 m-b-20"></StackLayout>
     <StackLayout row="2" col="0">
-        <ListView [items]="myItems" (itemTap)="onItemTap($event)">
+        <ListView [items]="jobArray" (itemTap)="onItemTap($event)">
             <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
                 <StackLayout [class.odd]="odd" [class.even]="even" orientation="horizontal" class="job-list">
                     <Label width="10%" class="counter" [text]=' i + 1 '></Label>

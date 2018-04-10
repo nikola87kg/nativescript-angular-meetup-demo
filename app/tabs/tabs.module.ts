@@ -1,7 +1,7 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 
-import { BrowseComponent } from "./browse/browse.component";
+import { SurveyComponent } from "./survey/survey.component";
 import { HomeComponent } from "./home/home.component";
 import { JobsComponent } from "./jobs/jobs.component";
 import { TabsRoutingModule } from "./tabs-routing.module";
@@ -15,7 +15,7 @@ import { TabsComponent } from "./tabs.component";
     declarations: [
         TabsComponent,
         HomeComponent,
-        BrowseComponent,
+        SurveyComponent,
         JobsComponent
     ],
     schemas: [
