@@ -7,7 +7,7 @@ import { Observable } from "rxjs/Observable";
 @Injectable()
 export class SurveyService {
 
-  apiURL: string = "http:/192.168.88.66/api/";
+  apiURL: string = "http://realtime-apps.quantox.tech/api/";
 
   constructor(private http: Http) {}
 

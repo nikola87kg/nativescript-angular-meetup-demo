@@ -48,8 +48,8 @@ export class HomeComponent implements OnInit {
   }
 
   meetupCounter() {
-    const meetupTime = moment([2018, 3, 12, 18, 0, 0]);
-    const rightNow = moment().add(2, "hours"); // timezone
+    const meetupTime = moment([2018, 3, 12, 16, 0, 0]);
+    const rightNow = moment()
     /* Total remaining units */
     const daysTotal = meetupTime.diff(rightNow, "days");
     const hoursTotal = meetupTime.diff(rightNow, "hours");
