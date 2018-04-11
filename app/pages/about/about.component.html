@@ -1,0 +1,20 @@
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" text="O aplikaciji"></Label>
+</ActionBar>
+
+<GridLayout class="page page-content" rows="30, *, 30" columns="30, *, 30">
+
+    <StackLayout row="1" col="1">
+        <ListView [items]="aboutList" (itemTap)="goTo(item.link)">
+            <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
+                <StackLayout class="about-list" [class.odd]="odd" [class.even]="even"
+                             (tap)="goTo(item.link)" orientation="horizontal" 
+                            >
+                    <Image [src]="item.source" width="30" height="30" stretch="aspectFill"></Image>
+                    <Label [text]="item.text"> </Label>
+                </StackLayout>
+            </ng-template>
+        </ListView>
+    </StackLayout>
+    
+</GridLayout>

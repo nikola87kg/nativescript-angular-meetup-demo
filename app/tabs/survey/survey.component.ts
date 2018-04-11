@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from "@angular/core";
 import { ListPicker } from "ui/list-picker";
 
-import * as AppSettings from 'application-settings';
+import * as AppSettings from "application-settings";
 
 import { SurveyService } from "../../shared/services/survey.service";
-import { Color } from "tns-core-modules/color/color";
 
 const dialogs = require("ui/dialogs");
 const validator = require("email-validator");
@@ -17,13 +16,13 @@ const validator = require("email-validator");
 })
 export class SurveyComponent implements OnInit {
     /* Defaults */
-    cancelButton: string = "Odustani"
+    cancelButton: string = "Odustani";
     isFormSubmitted: boolean;
 
     /* Position */
     positionSelected: string;
     positionPlaceholder: string = "Izaberi poziciju...";
-    positionStats: any;
+    positionStats: object;
     positionArray: Array<string> = [
         "Fullstack developer",
         "Frontend developer",
@@ -38,11 +37,13 @@ export class SurveyComponent implements OnInit {
     /* Knowledge */
     knowledgeSelected: string;
     knowledgePlaceholder: string = "Izaberi nivo znanja...";
+    knowledgeStats: object;
     knowledgeArray: Array<string> = ["Senior", "Medior", "Junior", "Drugo"];
 
     /* Years */
     yearSelected: string;
     yearPlaceholder: string = "Izaberi opseg godina...";
+    yearStats: object;
     yearArray: Array<string> = [
         "manje od 25",
         "26-35",
@@ -54,6 +55,7 @@ export class SurveyComponent implements OnInit {
     /* Favourite JS Framework */
     frameworkSelected: string;
     frameworkPlaceholder: string = "Izaberi JS framework...";
+    frameworkStats: object;
     frameworkArray: Array<string> = [
         "Angular",
         "React",
@@ -70,22 +72,19 @@ export class SurveyComponent implements OnInit {
     /* Validation */
     isFormInvalid: boolean;
 
-    /* Fake Data */
-    chartData = [
-        {Country: "Nemacka", Amount: 1, Amount2: 15},
-        {Country: "Island", Amount: 2, Amount2: 12},
-        {Country: "Srbija", Amount: 3, Amount2: 12}
-    ]
-
     constructor(private surveyService: SurveyService) {}
-
 
     printValue(value) {
         this.emailField = value;
     }
 
+    checkStorage() {
+        return AppSettings.getBoolean("formSubmitted");
+    }
+
     /* Logic */
     ngOnInit() {
+        this.isFormSubmitted = this.checkStorage();
     }
 
     openPositions() {
@@ -171,14 +170,27 @@ export class SurveyComponent implements OnInit {
             this.surveyService.submitSurveys(answers).subscribe(
                 (response) => {
                     AppSettings.setBoolean("formSubmitted", true);
-                    this.isFormSubmitted = AppSettings.getBoolean("formSubmitted");
-                    this.surveyService.getSurveys('position').subscribe(
-                        (stats) => { 
+                    this.isFormSubmitted = this.checkStorage();
+                    this.surveyService.getSurveys("position").subscribe(
+                        (stats) => {
                             this.positionStats = stats;
-                            console.log(stats);
-                            console.dir("dir", stats);
                          }
-                    )
+                    );
+                    this.surveyService.getSurveys("framework").subscribe(
+                        (stats) => {
+                            this.frameworkStats = stats;
+                         }
+                    );
+                    this.surveyService.getSurveys("years").subscribe(
+                        (stats) => {
+                            this.yearStats = stats;
+                         }
+                    );
+                    this.surveyService.getSurveys("experience").subscribe(
+                        (stats) => {
+                            this.knowledgeStats = stats;
+                         }
+                    );
                  },
                 (error) => { console.log(error); }
             );
@@ -187,7 +199,7 @@ export class SurveyComponent implements OnInit {
             this.validationMessage = "* Morate popuniti sva polja" :
             this.validationMessage = "* Email nije validan";
             AppSettings.setBoolean("formSubmitted", false);
-            this.isFormSubmitted = AppSettings.getBoolean("formSubmitted");
+            this.isFormSubmitted = this.checkStorage();
             this.isFormInvalid = true;
             setTimeout(() => { this.isFormInvalid = false; }, 3000);
         }

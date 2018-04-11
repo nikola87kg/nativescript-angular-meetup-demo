@@ -7,7 +7,7 @@
     <StackLayout row="2" col="0">
         <ListView [items]="jobArray" (itemTap)="onItemTap($event)">
             <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
-                <StackLayout [class.odd]="odd" [class.even]="even" orientation="horizontal" class="job-list">
+                <StackLayout [class.odd]="odd" [class.even]="even" (tap)="goToWeb(item.link)" orientation="horizontal" class="job-list">
                     <Label width="10%" class="counter" [text]=' i + 1 '></Label>
                     <Label width="60%" class="position" [text]='item.name'></Label>
                     <Label width="30%" class="city" [text]='item.city'></Label>

@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from "@angular/core";
 
+import { JobsService } from "../../shared/services/jobs.service";
 import { JobModel } from "./jobs.model";
 
-import { JobsService } from "../../shared/services/jobs.service";
+import * as utils from "utils/utils";
 
 @Component({
     selector: "Jobs",
@@ -13,14 +14,7 @@ import { JobsService } from "../../shared/services/jobs.service";
 })
 
 export class JobsComponent implements OnInit {
-    jobArray: Array<JobModel> = [{
-        id: 1,
-        name: "FE developer",
-        city: "Kragujevac",
-        link: "https://quantox.com",
-        created_at: "2018-04-10 13:28:39",
-        updated_at: "2018-04-10 13:28:39"
-    }];
+    jobArray: Array<JobModel>;
     private counter: number;
 
     constructor(private jobsService: JobsService) {
@@ -30,15 +24,25 @@ export class JobsComponent implements OnInit {
         this.getJobs();
     }
 
+    goToWeb(link) {
+        utils.openUrl(link);
+    }
+
     getJobs() {
         this.jobsService.getJobs().subscribe(
             (response) => {
                 this.jobArray = response.data;
+            },
+            (error) => {
+                this.jobArray = [{
+                    id: 1,
+                    name: "NativeScript developer",
+                    city: "Kragujevac",
+                    link: "https://quantox.com/careers",
+                    created_at: "2018-04-10 13:28:39",
+                    updated_at: "2018-04-10 13:28:39"
+                }];
             }
         );
-    }
-
-    onItemTap(args) {
-        console.log("Go to link" + args.index);
     }
 }

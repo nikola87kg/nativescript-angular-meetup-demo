@@ -48,29 +48,21 @@ export class HomeComponent implements OnInit {
   }
 
   meetupCounter() {
-    const meetupTime = moment([2018, 3, 12, 16, 0, 0]);
-    const rightNow = moment()
+    const meetupTime = moment([2018, 3, 12, 17, 3, 0]);
+    const rightNow = moment();
     /* Total remaining units */
     const daysTotal = meetupTime.diff(rightNow, "days");
     const hoursTotal = meetupTime.diff(rightNow, "hours");
     const minutesTotal = meetupTime.diff(rightNow, "minutes");
     const secondsTotal = meetupTime.diff(rightNow, "seconds");
     /* Relative remaining units */
-    const hoursLeft = hoursTotal % (daysTotal * 24);
-    const minutesLeft = minutesTotal % (hoursTotal * 60);
-    const secondsLeft = secondsTotal % (minutesTotal * 60);
+    const hoursLeft = daysTotal > 0 ? hoursTotal % (daysTotal * 24) : hoursTotal;
+    const minutesLeft = hoursTotal > 0 ? minutesTotal % (hoursTotal * 60) : minutesTotal;
+    const secondsLeft = minutesTotal > 0 ? secondsTotal % (minutesTotal * 60) : secondsTotal;
     /* Counter */
-    this.timeDifference =
-      secondsTotal > 0
-        ? daysTotal +
-          " dana " +
-          hoursLeft +
-          "h " +
-          minutesLeft +
-          "min " +
-          secondsLeft +
-          "s"
-        : "Dobrodošli";
+    this.timeDifference = secondsTotal > 0
+        ? daysTotal + " dana " +  hoursLeft + "h " + minutesLeft + "min " + secondsLeft + "s"
+        : "Dobrodošli na KG Meetup";
   }
 
   ngOnInit(): void {
