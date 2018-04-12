@@ -15,32 +15,40 @@ export class StatsComponent {
   yearStats: Array<any> = [{}];
   knowledgeStats: Array<any> = [{}];
 
-  constructor(private surveyService: SurveyService) {}
+  constructor(private surveyService: SurveyService) {
+  }
 
   ngOnInit() {
     this.surveyService.getSurveys("position").subscribe(
       (stats) => {
-        console.dir(stats);
-        this.positionStats = stats;
+        this.positionStats = stats._body;
       },
       (error) => {
-        console.dir("error is:", error);
-        console.log("error is:", error);
+        console.log("error:", error);
       }
     );
     this.surveyService.getSurveys("framework").subscribe(
       (stats) => {
-        this.frameworkStats = stats;
+        this.frameworkStats = stats._body;
+      },
+      (error) => {
+        console.log("error:", error);
       }
     );
     this.surveyService.getSurveys("years").subscribe(
       (stats) => {
-        this.yearStats = stats;
+        this.yearStats = stats._body;
+      },
+      (error) => {
+        console.log("error:", error);
       }
     );
     this.surveyService.getSurveys("experience").subscribe(
       (stats) => {
-        this.knowledgeStats = stats;
+        this.knowledgeStats = stats._body;
+      },
+      (error) => {
+        console.log("error:", error);
       }
     );
   }

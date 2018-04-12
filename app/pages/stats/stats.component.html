@@ -3,54 +3,46 @@
 </ActionBar>
 
 <!-- Stats -->
-<GridLayout class="page page-content" rows="auto, auto, auto, auto, auto">
 
-    <StackLayout class="survey-wrapper" row="0">
-        <Label text="Pozicije" clas="headline"></Label>
-        <ListView [items]="positionStats">
-            <ng-template let-item="item" let-i="index">
-                <StackLayout class="position-stats" >
-                    <Label text="test"></Label>
-                    <Label [text]="item.field"></Label>
-                    <Label [text]="item.total" class="total"></Label>
-                </StackLayout>
-            </ng-template>
-        </ListView>
+<ScrollView>
+    <StackLayout>
+        <GridLayout class="page page-content" rows="auto, 250, auto, 250, auto, 250, auto, 250">
+            <Label text="Pozicije: " class="headline" row="0"></Label>
+            <ListView [items]="positionStats" row="1">
+                <ng-template let-item="item" let-i="index">
+                    <StackLayout class="position-stats" orientation="horizontal">
+                        <Label [text]="item.field"></Label>
+                        <Label [text]="item.total" class="total"></Label>
+                    </StackLayout>
+                </ng-template>
+            </ListView>
+            <Label text="Nivo iskustva: " class="headline" row="2"></Label>
+            <ListView [items]="knowledgeStats" row="3">
+                <ng-template let-item="item" let-i="index">
+                    <StackLayout class="position-stats" orientation="horizontal">
+                        <Label [text]="item.field"></Label>
+                        <Label [text]="item.total" class="total"></Label>
+                    </StackLayout>
+                </ng-template>
+            </ListView>
+            <Label text="Framework: " class="headline" row="4"></Label>
+            <ListView [items]="frameworkStats" row="5">
+                <ng-template let-item="item" let-i="index">
+                    <StackLayout class="position-stats" orientation="horizontal">
+                        <Label [text]="item.field"></Label>
+                        <Label [text]="item.total" class="total"></Label>
+                    </StackLayout>
+                </ng-template>
+            </ListView>
+            <Label text="Godine: " class="headline" row="6"></Label>
+            <ListView [items]="yearStats" row="7">
+                <ng-template let-item="item" let-i="index">
+                    <StackLayout class="position-stats" orientation="horizontal">
+                        <Label [text]="item.field"></Label>
+                        <Label [text]="item.total" class="total"></Label>
+                    </StackLayout>
+                </ng-template>
+            </ListView>
+        </GridLayout>
     </StackLayout>
-
-    <StackLayout class="survey-wrapper" row="1">
-        <Label text="Iskustvo" clas="headline"></Label>
-        <ListView [items]="knowledgeStats">
-            <ng-template let-item="item" let-i="index">
-                <StackLayout class="position-stats" >
-                    <Label [text]="item.field"></Label>
-                    <Label [text]="item.total" class="total"></Label>
-                </StackLayout>
-            </ng-template>
-        </ListView>
-    </StackLayout>
-
-    <StackLayout class="survey-wrapper" row="2">
-        <Label text="Godine" clas="headline"></Label>
-        <ListView [items]="yearStats">
-            <ng-template let-item="item" let-i="index">
-                <StackLayout class="position-stats" >
-                    <Label [text]="item.field"></Label>
-                    <Label [text]="item.total" class="total"></Label>
-                </StackLayout>
-            </ng-template>
-        </ListView>
-    </StackLayout>
-
-    <StackLayout class="survey-wrapper" row="3">
-        <Label text="Framework" clas="headline"></Label>
-        <ListView [items]="frameworkStats">
-            <ng-template let-item="item" let-i="index">
-                <StackLayout class="position-stats" >
-                    <Label [text]="item.field"></Label>
-                    <Label [text]="item.total" class="total"></Label>
-                </StackLayout>
-            </ng-template>
-        </ListView>
-    </StackLayout>
-</GridLayout>
+</ScrollView>

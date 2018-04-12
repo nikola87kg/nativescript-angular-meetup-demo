@@ -30,10 +30,6 @@ export class SurveyService {
         { "field": surveyType },
         { headers: this.getCommonHeaders() }
     )
-    .map(
-      (response) => {
-        response.json()
-      })
     .catch (this.handleErrors);
   }
 
