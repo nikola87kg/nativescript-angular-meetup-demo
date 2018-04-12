@@ -33,6 +33,11 @@ export class AboutComponent {
       source: "res://linkedin_black_logo",
       text: "Postavite pitanje",
       link: "https://www.linkedin.com/in/nikolajeremic"
+    },
+    {
+      source: "res://slides_logo",
+      text: "Pogledaj prezentaciju",
+      link:  "https://docs.google.com/presentation/d/1R8KsqgY9v-LyslmVn-BhwYs-SBuHkqAC-KhQYpIbQok/edit#slide=id.g3813a982bc_0_49"
     }
   ];
 

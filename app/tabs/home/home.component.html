@@ -21,7 +21,7 @@
 
     <!-- Buttons -->
     <StackLayout class="button-wrapper" [row]="isPortrait ? '1' : '0'" [col]="isPortrait ? '0' : '1'">
-        <Button class="btn btn-rounded-lg pool-color" text="Popuni anketu" (tap)="goToForm()"></Button>
+        <Button class="btn btn-rounded-lg pool-color" text="Statistika" [nsRouterLink]="['/stats']"  ></Button>
     </StackLayout>
     <StackLayout class="button-wrapper" row="1" col="1">
         <Button class="btn btn-rounded-lg jobs-color" [nsRouterLink]="['/about']"  

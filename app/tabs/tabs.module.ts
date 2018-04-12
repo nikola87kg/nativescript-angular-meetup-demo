@@ -22,10 +22,6 @@ import { SurveyService } from "../shared/services/survey.service";
         SurveyComponent,
         JobsComponent
     ],
-    providers: [
-        JobsService,
-        SurveyService
-    ],
     schemas: [
         NO_ERRORS_SCHEMA
     ]

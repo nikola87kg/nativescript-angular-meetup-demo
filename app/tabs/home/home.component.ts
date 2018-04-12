@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
   }
 
   meetupCounter() {
-    const meetupTime = moment([2018, 3, 12, 17, 3, 0]);
+    const meetupTime = moment([2018, 3, 12, 19, 30, 0]);
     const rightNow = moment();
     /* Total remaining units */
     const daysTotal = meetupTime.diff(rightNow, "days");

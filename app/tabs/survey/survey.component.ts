@@ -4,6 +4,8 @@ import { ListPicker } from "ui/list-picker";
 import * as AppSettings from "application-settings";
 
 import { SurveyService } from "../../shared/services/survey.service";
+import { RouterExtensions } from "nativescript-angular";
+import { Router } from "@angular/router";
 
 const dialogs = require("ui/dialogs");
 const validator = require("email-validator");
@@ -22,7 +24,7 @@ export class SurveyComponent implements OnInit {
     /* Position */
     positionSelected: string;
     positionPlaceholder: string = "Izaberi poziciju...";
-    positionStats: object;
+    positionStats = [{}];
     positionArray: Array<string> = [
         "Fullstack developer",
         "Frontend developer",
@@ -37,13 +39,13 @@ export class SurveyComponent implements OnInit {
     /* Knowledge */
     knowledgeSelected: string;
     knowledgePlaceholder: string = "Izaberi nivo znanja...";
-    knowledgeStats: object;
+    knowledgeStats = [{}];
     knowledgeArray: Array<string> = ["Senior", "Medior", "Junior", "Drugo"];
 
     /* Years */
     yearSelected: string;
     yearPlaceholder: string = "Izaberi opseg godina...";
-    yearStats: object;
+    yearStats = [{}];
     yearArray: Array<string> = [
         "manje od 25",
         "26-35",
@@ -55,7 +57,7 @@ export class SurveyComponent implements OnInit {
     /* Favourite JS Framework */
     frameworkSelected: string;
     frameworkPlaceholder: string = "Izaberi JS framework...";
-    frameworkStats: object;
+    frameworkStats = [{}];
     frameworkArray: Array<string> = [
         "Angular",
         "React",
@@ -72,7 +74,12 @@ export class SurveyComponent implements OnInit {
     /* Validation */
     isFormInvalid: boolean;
 
-    constructor(private surveyService: SurveyService) {}
+    constructor(private surveyService: SurveyService, 
+    private router: Router) {}
+
+    navigateToStats() {
+        this.router.navigate(['/stats']);
+      }
 
     printValue(value) {
         this.emailField = value;
@@ -147,6 +154,11 @@ export class SurveyComponent implements OnInit {
             });
     }
 
+
+    switchSurvey() {
+        this.isFormSubmitted = !this.isFormSubmitted;
+    }
+
     isValidEmail = function() {
         return validator.validate(this.emailField);
     };
@@ -170,27 +182,7 @@ export class SurveyComponent implements OnInit {
             this.surveyService.submitSurveys(answers).subscribe(
                 (response) => {
                     AppSettings.setBoolean("formSubmitted", true);
-                    this.isFormSubmitted = this.checkStorage();
-                    this.surveyService.getSurveys("position").subscribe(
-                        (stats) => {
-                            this.positionStats = stats;
-                         }
-                    );
-                    this.surveyService.getSurveys("framework").subscribe(
-                        (stats) => {
-                            this.frameworkStats = stats;
-                         }
-                    );
-                    this.surveyService.getSurveys("years").subscribe(
-                        (stats) => {
-                            this.yearStats = stats;
-                         }
-                    );
-                    this.surveyService.getSurveys("experience").subscribe(
-                        (stats) => {
-                            this.knowledgeStats = stats;
-                         }
-                    );
+                    this.navigateToStats();
                  },
                 (error) => { console.log(error); }
             );
@@ -198,8 +190,6 @@ export class SurveyComponent implements OnInit {
             this.isValidEmail() ?
             this.validationMessage = "* Morate popuniti sva polja" :
             this.validationMessage = "* Email nije validan";
-            AppSettings.setBoolean("formSubmitted", false);
-            this.isFormSubmitted = this.checkStorage();
             this.isFormInvalid = true;
             setTimeout(() => { this.isFormInvalid = false; }, 3000);
         }

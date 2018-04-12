@@ -1,6 +1,6 @@
 <ScrollView>
     <!-- Survey -->
-    <GridLayout *ngIf="!isFormSubmitted" class="page page-content" rows="auto, auto, auto, auto, auto, auto">
+    <GridLayout class="page page-content" rows="auto, auto, auto, auto, auto, auto">
         <!-- Position -->
         <StackLayout row="0" (tap)="openPositions()">
             <Label class="question" text="1. Na kojoj poziciji radiš?"></Label>
@@ -33,54 +33,6 @@
             <Label [text]="validationMessage" *ngIf="isFormInvalid" class="warning"></Label>
         </StackLayout>
     </GridLayout>
-    <!-- Stats -->
-    <GridLayout *ngIf="isFormSubmitted" rows="auto, auto, auto, auto" columns="*">
 
-        <StackLayout row="0">
-            <ListView [items]="positionStats">
-                <ng-template let-item="item" let-i="index">
-                    <StackLayout class="position-stats" orientation="horizontal">
-                        <Label [text]="item.field"></Label>
-                        <Label [text]="item.total"></Label>
-                    </StackLayout>
-                </ng-template>
-            </ListView>
-        </StackLayout>
 
-        <StackLayout row="1">
-            <ListView [items]="yearStats">
-                <ng-template let-item="item" let-i="index">
-                    <StackLayout class="position-stats" orientation="horizontal">
-                        <Label [text]="item.field"></Label>
-                        <Label [text]="item.total"></Label>
-                    </StackLayout>
-                </ng-template>
-            </ListView>
-        </StackLayout>
-
-        <StackLayout row="2">
-            <ListView [items]="knowledgeStats">
-                <ng-template let-item="item" let-i="index">
-                    <StackLayout class="position-stats" orientation="horizontal">
-                        <Label [text]="item.field"></Label>
-                        <Label [text]="item.total"></Label>
-                    </StackLayout>
-                </ng-template>
-            </ListView>
-        </StackLayout>
-
-        <StackLayout row="3">
-            <ListView [items]="frameworkStats">
-                <ng-template let-item="item" let-i="index">
-                    <StackLayout class="position-stats" orientation="horizontal">
-                        <Label [text]="item.field"></Label>
-                        <Label [text]="item.total"></Label>
-                    </StackLayout>
-                </ng-template>
-            </ListView>
-        </StackLayout>
-
-        <StackLayout>
-        </StackLayout>
-    </GridLayout>
 </ScrollView>

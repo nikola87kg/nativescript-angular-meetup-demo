@@ -12,6 +12,8 @@ registerElement("Gradient", () => require("nativescript-gradient").Gradient);
 /* Application modules */
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { JobsService } from "./shared/services/jobs.service";
+import { SurveyService } from "./shared/services/survey.service";
 
 @NgModule({
     bootstrap: [
@@ -26,6 +28,10 @@ import { AppComponent } from "./app.component";
     ],
     declarations: [
         AppComponent
+    ],
+    providers: [
+        JobsService,
+        SurveyService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

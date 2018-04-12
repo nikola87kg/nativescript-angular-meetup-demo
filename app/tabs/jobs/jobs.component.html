@@ -1,18 +1,22 @@
-<GridLayout class="page page-content" rows="auto, auto, *">
+<GridLayout class="page page-content" rows="auto, *">
+
+    <!-- Title -->
     <StackLayout row="0" col="0">
         <Label class="h2 text-center m-t-20 " text="Otvorene pozicije u Quantoxu">
         </Label>
     </StackLayout>
-    <StackLayout row="1" col="0" class="hr-dark m-t-20 m-b-20"></StackLayout>
-    <StackLayout row="2" col="0">
-        <ListView [items]="jobArray" (itemTap)="onItemTap($event)">
+
+    <!-- List -->
+    <StackLayout row="1" col="0">
+        <ListView [items]="jobArray">
             <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
                 <StackLayout [class.odd]="odd" [class.even]="even" (tap)="goToWeb(item.link)" orientation="horizontal" class="job-list">
-                    <Label width="10%" class="counter" [text]=' i + 1 '></Label>
-                    <Label width="60%" class="position" [text]='item.name'></Label>
+                    <Label width="15%" class="counter" [text]=' i + 1 '></Label>
+                    <Label width="55%" class="position" [text]='item.name'></Label>
                     <Label width="30%" class="city" [text]='item.city'></Label>
                 </StackLayout>
             </ng-template>
         </ListView>
+
     </StackLayout>
 </GridLayout>

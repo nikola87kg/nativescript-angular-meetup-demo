@@ -14,7 +14,14 @@ import * as utils from "utils/utils";
 })
 
 export class JobsComponent implements OnInit {
-    jobArray: Array<JobModel>;
+    jobArray: Array<JobModel> = [{
+        id: 0,
+        name: "NativeScript developer",
+        city: "Kragujevac",
+        link: "https://quantox.com/careers",
+        created_at: "2018-04-10 13:28:39",
+        updated_at: "2018-04-10 13:28:39"
+    }];
     private counter: number;
 
     constructor(private jobsService: JobsService) {
@@ -34,14 +41,7 @@ export class JobsComponent implements OnInit {
                 this.jobArray = response.data;
             },
             (error) => {
-                this.jobArray = [{
-                    id: 1,
-                    name: "NativeScript developer",
-                    city: "Kragujevac",
-                    link: "https://quantox.com/careers",
-                    created_at: "2018-04-10 13:28:39",
-                    updated_at: "2018-04-10 13:28:39"
-                }];
+                this.jobArray = [];
             }
         );
     }

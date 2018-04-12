@@ -27,10 +27,13 @@ export class SurveyService {
   getSurveys(surveyType) {
     return this.http.post(
         this.apiURL + "surveys/stats/",
-        { field: surveyType },
+        { "field": surveyType },
         { headers: this.getCommonHeaders() }
     )
-    .map((response) => response.json())
+    .map(
+      (response) => {
+        response.json()
+      })
     .catch (this.handleErrors);
   }
 
